@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('super_heroes', function (Blueprint $table) {
+        Schema::create('publichers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name')->nullable();
-            $table->string('nick_name');
-            $table->enum('sex', ['MALE', 'FEMININE'])->nullable();
-            $table->foreignId('publisher_id')->nullable()->constrained('publichers');
+            $table->string('name_publisher');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('super_heroes');
+        Schema::dropIfExists('publichers');
     }
 };
