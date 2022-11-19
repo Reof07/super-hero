@@ -11,6 +11,137 @@
         }
     ],
     "paths": {
-        "/api": {}
+        "/api": {},
+        "/super-heros": {
+            "get": {
+                "tags": [
+                    "SuperHero"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getsuper-heros",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Super heros all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SuperHero": {
+                "properties": {
+                    "first_name": {
+                        "description": "The name super hero",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "name super hero"
+                    },
+                    "last_name": {
+                        "description": "last name of super hero",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "Last_name super hero"
+                    },
+                    "nick_name": {
+                        "description": "The nick_name super hero",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "super app"
+                    },
+                    "sex": {
+                        "description": "The sex super hero",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "publisher_id": {
+                        "description": "The publisher_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
     }
 }
