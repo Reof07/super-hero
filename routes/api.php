@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\PublicherController;
 use App\Http\Controllers\Api\V1\SuperHeroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function ($router) {
     $router->apiresource('super-heros', SuperHeroController::class);
+    $router->apiresource('publishers', PublicherController::class);
 });
