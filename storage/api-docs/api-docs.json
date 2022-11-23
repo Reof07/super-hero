@@ -12,6 +12,267 @@
     ],
     "paths": {
         "/api": {},
+        "/publishers": {
+            "get": {
+                "tags": [
+                    "Publicher"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getpublicher",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publicher all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Publicher"
+                ],
+                "summary": "Creates a new publicher resource",
+                "description": "Creates a new publicher resource",
+                "operationId": "25e6c872af8b3cccb56bedb618128264",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Publicher"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/publishers/{id}": {
+            "get": {
+                "tags": [
+                    "Publicher"
+                ],
+                "summary": "Get data information",
+                "description": "Returns data",
+                "operationId": "getpublisherById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Publisher",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Publicher"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Publicher"
+                ],
+                "summary": "Update existing data",
+                "description": "Returns updated  data",
+                "operationId": "update-publisher resource",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Number id of the resource",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Publicher"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Publicher"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Publicher"
+                ],
+                "summary": "Delete existing data",
+                "description": "Deletes a record and returns no content",
+                "operationId": "delete-publisher",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Return Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/super-heros": {
             "get": {
                 "tags": [
@@ -94,11 +355,201 @@
                         "description": "error."
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "SuperHero"
+                ],
+                "summary": "Creates a new super hero resource",
+                "description": "Creates a new super hero resource",
+                "operationId": "f9892e5064cd0bf6bd2e1c09452c7b60",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SuperHero"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/super-heros/{id}": {
+            "get": {
+                "tags": [
+                    "SuperHero"
+                ],
+                "summary": "Get data information",
+                "description": "Returns data",
+                "operationId": "getsuper-herosById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "SuperHero id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuperHero"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SuperHero"
+                ],
+                "summary": "Update existing data",
+                "description": "Returns updated  data",
+                "operationId": "update-super-hero",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Number id of the resource",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SuperHero"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuperHero"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SuperHero"
+                ],
+                "summary": "Delete existing data",
+                "description": "Deletes a record and returns no content",
+                "operationId": "delete-super-hero",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Return Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
             }
         }
     },
     "components": {
         "schemas": {
+            "Publicher": {
+                "properties": {
+                    "name_publisher": {
+                        "description": "The name publisher",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "Marvel"
+                    }
+                },
+                "type": "object"
+            },
             "SuperHero": {
                 "properties": {
                     "first_name": {
