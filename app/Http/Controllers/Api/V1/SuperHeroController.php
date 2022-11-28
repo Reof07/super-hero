@@ -7,6 +7,7 @@ use App\Models\SuperHero;
 use App\Http\Requests\StoreSuperHeroRequest;
 use App\Http\Requests\UpdateSuperHeroRequest;
 use App\Http\Resources\superHeroResource;
+use Exception;
 use Illuminate\Http\Request;
 
 class SuperHeroController extends Controller
@@ -90,7 +91,7 @@ class SuperHeroController extends Controller
      *         description="Super heros all."
      *     ),
      *     @OA\Response(
-     *         response="default",
+     *         response="default
      *         description="error."
      *     )
      *  )
@@ -100,6 +101,7 @@ class SuperHeroController extends Controller
 
         $superHeros = SuperHero::filters($request->all())
             ->search($request->all());
+
         return (superHeroResource::collection($superHeros)->additional(
             [
                 'message' => 'Successfully response'
@@ -145,6 +147,7 @@ class SuperHeroController extends Controller
      */
     public function store(StoreSuperHeroRequest $request)
     {
+
         $superHero = new SuperHero();
         $superHero->first_name  = $request->first_name;
         $superHero->last_name = $request->last_name;
